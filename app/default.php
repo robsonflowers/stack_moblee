@@ -22,7 +22,7 @@ include_once BASE_PATH.'/app/classes/Utils.php';
 $Utils = new Utils();
 
 # Define uma lista com os arquivos que poderao ser chamados na URL
-$permitidos = array('index', '404', 'teste');
+$permitidos = array('index', '404', 'question');
 
 # Verifica se a variavel $_GET['pagina'] existe e se ela faz parte da lista de arquivos permitidos
 if(isset($_GET['page'])) {
@@ -38,6 +38,9 @@ $pagina = (file_exists("{$pasta}/".$page.'.php')) ? $page : '404';
 
 # Titulos das paginas
 switch ($pagina){
+    case 'question';
+        $title = 'Resultado da sua consulta';
+        break;
     case '404';
         $title = 'Página não encontrada';
         break;

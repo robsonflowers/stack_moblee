@@ -5,7 +5,7 @@
 </form>
 <div class="ver"></div>
 <h3>Buscar na API</h3>
-<form action="" method="POST" enctype="multipart/form-data" class="buscar">
+<form action="question" method="GET" enctype="multipart/form-data" class="buscar" target="_blank">
     <!-- -->
     <label class="" for="page">Page</label>
     <input type="text" name="page" class="" placeholder="">
