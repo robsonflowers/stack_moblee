@@ -1,0 +1,8 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} ^.*/index.php
+RewriteRule ^(.*)$ / [R=301,L]
+RewriteRule ^([a-z_-]+)/$ index.php?page=$1 [NC,L]
+RewriteRule ^([a-z_-]+)$ http://%{HTTP_HOST}/stack_moblee/$1 [L,R=301]
+
