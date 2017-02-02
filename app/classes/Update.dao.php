@@ -26,9 +26,9 @@ class UpdateDAO{
         return json_encode($resultSet->fetchAll(PDO::FETCH_ASSOC));
     }
     # INSERE NOVO REGISTRO 
-    static public function insere($nome,$login,$telefone) {
+    static public function insere($content) {
         $db = Conexao::getInstance();
-        $cmd = $db->prepare("INSERT INTO tecnico(nome,login,telefone) values ('$nome','$login','$telefone')");
+        $cmd = $db->prepare("INSERT IGNORE INTO last_update(last_update) values (UNIX_TIMESTAMP())");
         $cmd->execute();
     }
 }

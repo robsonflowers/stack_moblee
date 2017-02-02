@@ -12,8 +12,7 @@ class ContentDAO{
         $db = Conexao::getInstance();
         $resultSet = $db->query("SELECT c.question_id, c.title, c.owner_name, c.score, c.creation_date, c.link, c.is_answered
                                     FROM content AS c
-                                    INNER JOIN last_update as l ON c.question_id = l.content
-                                    WHERE l.last_update = (SELECT MAX(last_update) FROM last_update)");
+                                    ");
         $arrContent = array();
         foreach ($resultSet as $linha) {
             $arrContent[] = new Content($linha['question_id'], $linha['title'], $linha['owner_name'],
@@ -29,11 +28,19 @@ class ContentDAO{
         return json_encode($resultSet->fetchAll(PDO::FETCH_ASSOC));
     }
     # INSERE NOVO REGISTRO 
-    static public function insere() {
+    static public function insere($questionid, $title, $ownername, $score, $creationdate, $link, $isanswered) {
         $db = Conexao::getInstance();
-        $cmd = $db->prepare("INSERT INTO content() values ()");
-        $cmd->execute();
-       
+        $cmd = $db->prepare("INSERT INTO content(question_id, title, owner_name, score, creation_date, link, is_answered)
+                                VALUES
+                            ($questionid, '$title', '$ownername', $score, $creationdate, '$link', $isanswered)");
+        try{
+            $cmd->execute();
+            return 'ok';
+        } catch (Exception $ex) {
+            return 'erro: '.$ex;
+        }
+        
+        
     }
    
 }
