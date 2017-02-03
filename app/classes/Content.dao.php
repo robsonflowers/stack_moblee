@@ -23,12 +23,13 @@ class ContentDAO{
         }
         return $arrContent;
     }
-    # RETORNA TODOS OS REGISTROS EM FORMATO JSON
-    static public function retornaTodosJSON() {
+    # RETORNA O TOTAL DE REGISTROS
+    static public function total() {
         $db = Conexao::getInstance();
-        $resultSet = $db->prepare("SELECT * FROM content");
+        $resultSet = $db->prepare("SELECT count(question_id) as total from content");
         $resultSet->execute();
-        return json_encode($resultSet->fetchAll(PDO::FETCH_ASSOC));
+        $total = $resultSet->fetch(PDO::FETCH_OBJ);
+        return $total->total;
     }
     # INSERE NOVO REGISTRO 
     static public function insere($questionid, $title, $ownername, $score, $creationdate, $link, $isanswered) {

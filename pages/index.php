@@ -19,13 +19,22 @@
     <form action="" method="GET" enctype="multipart/form-data" class="buscar" >
         <!-- -->
         <label class="" for="page">Page</label>
-        <input type="text" name="page" class="ip" placeholder="">
+        <input type="text" name="page" class="ip" placeholder="Página">
         <!-- -->
         <label class="" for="rpp">RPP</label>
-        <input type="text" name="rpp" class="ip" placeholder="">
+        <input type="text" name="rpp" class="ip" placeholder="Total de resultados por página">
         <!-- -->
         <label class="" for="sort">Sort</label>
-        <input type="text" name="sort" class="ip" placeholder="">
+        <select name="sort" class="ip">
+            <option value="" selected="">Para ordernar, selecione uma opção</option>
+            <option value="1">question_id</option>
+            <option value="2">title</option>
+            <option value="3">owner_name</option>
+            <option value="4">score</option>
+            <option value="5">creation_date</option>
+            <option value="6">link</option>
+            <option value="7">is_answered</option>
+        </select>
         <!-- -->
         <label class="" for="score">Score</label>
         <input type="text" name="score" class="ip" placeholder="">
