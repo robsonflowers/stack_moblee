@@ -1,4 +1,5 @@
 # bd_model/
 
-Pasta com o arquivo (MySQL Workbanch) de modelagem do banco de dados:
-* stack_moblee_model.mwb
+Pasta com os arquivos utilizados na modelagem deste sistema:
+* stack_moblee_model.mwb - Arquivo modelo de DB (MySQL Workbench)
+* stack_moblee_db.sql - (Arquivo SQL)
