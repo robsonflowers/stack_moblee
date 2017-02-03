@@ -34,7 +34,7 @@ $(function(){
                           '&score='+score+'&creationdate='+creation_date+'&link='+link+'&isanswered='+is_answered,
                     success: function(resposta) {
                         var texto;
-                        if(resposta==='ok'){
+                        if(resposta=='ok'){
                             texto = "Dados salvos localmente";
                         }
                         else{
