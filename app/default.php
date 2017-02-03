@@ -25,8 +25,8 @@ $Utils = new Utils();
 $permitidos = array('index', '404', 'question');
 
 # Verifica se a variavel $_GET['pagina'] existe e se ela faz parte da lista de arquivos permitidos
-if(isset($_GET['page'])) {
-    $page = (array_search($_GET['page'], $permitidos) !== false) ? $_GET['page'] : '404';
+if(isset($_GET['pagina'])) {
+    $page = (array_search($_GET['pagina'], $permitidos) !== false) ? $_GET['pagina'] : '404';
 }else{
     # Se não tiver nada, ela recebe o valor: index (referente ao arquivo pages/index.php
     $page = 'index';

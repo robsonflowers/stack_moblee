@@ -8,11 +8,14 @@
 include_once ('Content.class.php');
 include_once ('Conexao.php');
 class ContentDAO{
-    static public function retornaTodosUltimos() {
+    static public function retornaTodosUltimos($score, $sort, $inicio, $total_reg) {
         $db = Conexao::getInstance();
-        $resultSet = $db->query("SELECT c.question_id, c.title, c.owner_name, c.score, c.creation_date, c.link, c.is_answered
+        $resultSet = $db->query("SELECT c.question_id, c.title, c.owner_name, c.score, 
+                                    c.creation_date, c.link, c.is_answered
                                     FROM content AS c
-                                    ");
+                                    WHERE score >= $score
+                                    ORDER BY $sort ASC
+                                    LIMIT $inicio,$total_reg");
         $arrContent = array();
         foreach ($resultSet as $linha) {
             $arrContent[] = new Content($linha['question_id'], $linha['title'], $linha['owner_name'],
@@ -39,8 +42,17 @@ class ContentDAO{
         } catch (Exception $ex) {
             return 'erro: '.$ex;
         }
-        
-        
+    }
+    # DELETA TODOS OS REGISTROS DA TABELA 
+    static public function delete() {
+        $db = Conexao::getInstance();
+        $cmd = $db->prepare("TRUNCATE TABLE content");
+        try{
+            $cmd->execute();
+            return 'ok';
+        } catch (Exception $ex) {
+            return 'erro: '.$ex;
+        }
     }
    
 }
